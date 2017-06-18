@@ -1,15 +1,12 @@
+
+<form action="index.php" method="post" enctype="multipart/form-data">
+    <input type="number" placeholder="ђведите число n" name="name" /><br />
+    <input type="submit" value="Этправить форму" />
+</form>
 <?php
-$a = '1';
-//var_dump('$a', $a);
-$b = "variable";
-//var_dump('$b',$b); die;
-$c = 1.1;
-$d = true;
-$e = false;
-$monts = array ('January', 'February'); // php under 5.6
-$arr = [$b => 'this','five' => 5,3];// php upper 5.6
-$variable = 'hi';
-$$variable = 'world'; // $hi = 'world';
-$d = NULL;
-$var1 = (bool)(0);
+$b=2;
+$text = ($_POST['name'] <> $b) ? "Bad n" : (str_repeat("Silence is golden"." ", $b));
+echo ($text);
 ?>
+
+
