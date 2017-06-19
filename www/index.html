@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Домашнее задание</title>
+
+</head>
+<body>
+<form action="php/form.php" method="post" class="form" id="userForm">
+    <!--Организация полей авторизации логин, электронной почты, пароля-->
+    <label for="login">Введите логин</label>
+    <input type="text" id="login" placeholder="Введите логин" name="login" required=required><br>
+    <p>Укажите email адрес</p>
+    <input type="email" id="email" placeholder="Введите email адрес" name="email" required=required><br>
+    <p>Укажите адрес местопроживания</p>
+    <p><textarea rows="2" cols="45" id="home" placeholder="Укажите адрес" name="text" required="required"></textarea>
+    </p>
+    <p>Введите пароль</p>
+    <input type="password" id="password" placeholder="Введите пароль" name="password" required=required><br>
+
+
+    <!--вывод кнопки-->
+    <input type="submit" onsubmit="formSubmit()" value="Войти">
+
+</form>
+
+</body>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
