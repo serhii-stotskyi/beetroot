@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shop_form</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+</head>
+<body>
+<div class="col-md-4 col-md-offset-3 main">
+    <form class="form-horizontal" name="shopForm" action="shop.php" method="post">
+        <div>
+            <label for="selectCard" class="col-sm-2 control-label label-item">Graphics card</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="selectCard" name="selectCard">
+                    <option value="GTX1080">ASUS GTX1080 STRIX 8GB XDDR5 </option>
+                    <option value="GTX1070">ASUS GTX1070 STRIX 8GB DDR5</option>
+                    <option value="GTX1060">ASUS GTX1060 STRIX 6GB DDR5</option>
+                    <option value="GTX1050">ASUS GTX1050TI OS 3GB DDR5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputQuantity" class="col-sm-2 control-label">Quantity</label>
+            <div class="col-sm-10">
+                <label class="radio-inline">
+                    <input type="radio" name="inputQuantity" id="inputQuantity" value="1"> 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inputQuantity" id="inputQuantity1" value="2"> 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inputQuantity" id="inputQuantity2" value="3"> 3
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-10">
+                <input name="inputAddress" type="text" class="form-control" id="inputAddress"
+                       placeholder="Enter yor address">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" id="submitForm" class="btn btn-success" name="submitForm" >Send an order
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-md-4 col-md-offset-3 main">
+    <div class="form-group">
+        <div class="oder1">
+            <label for="oder">Your oder:</label>
+            <textarea class="form-control" rows="5" id="oder" name="oder"></textarea>
+        </div>
+    </div>
+
+</div>
+
+<script src=jquery-3.2.1.min.js></script>
+<script src="shop_script.js"></script>
+</body>
+</html>
