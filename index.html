@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>домашняя страница</title>
+</head>
+    <body>
+        <p> <form method="post" class="form" id="userBuy">
+        <input name="buy" type="radio" value="newBuy" required="required">Я новый клиент<br>
+        <input name="buy" type="radio" value="oldBuy" required="required">Я постоянный клиент<br>
+            <br>
+            <br>
+        <label for="nameLastName">Имя и Фамилия</label>
+        <input id="nameLastName" required ="required" type="text" name="nameLastName">
+            <br>
+        <br>
+        <label for="town">Введите город</label>
+        <input id="town" required ="required" type="text" name="town">
+        <br>
+        <p>Телефон в формате +380xxxxx-xx-xx:
+            <br><input type="tel" name="tel" ></p>
+         <label for="email">Электронная почта</label>
+        <input id="email" required ="required" type="email" name="email">
+        <br>
+        <br>
+        <input type="button" value="Подтвердите заказ" id="submit" placeholder="Подтвердите заказ">
+
+    </form>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+        <script src="main.js"></script>
+</body>
+</html>
+
+<!--action="formBuy.php"-->
