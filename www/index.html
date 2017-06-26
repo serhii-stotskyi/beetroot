@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Store</title>
+
+    <!--<link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+<h2>Оформление заказа</h2>
+<form method="post" class="form" id="StoreForm" action="Store.php">
+
+    <input id="Name" required="required" placeholder="Enter your name" type="text" name="name">
+    <!--<label for="Name">Имя, Отчество *</label>-->
+    <br>
+    <!--<label for="Surname">Фамилия *</label>-->
+    <input id="Surname" required="required" placeholder="Enter your surname" type="text" name="surname">
+    <br>
+    <!--<label for="Number">Номер телефона *</label>-->
+    <input id="Number" required="required" placeholder="Enter your phone number" type="tel" name="number">
+    <br>
+    <!--<label for="SelProduct">Название товара *</label>-->
+    <!--<input id="Product" required="required" placeholder="Enter product name" type="text" name="product">-->
+    <!--<br>-->
+    <select form="StoreForm" id="SelProduct">
+        <option selected disabled>Выберите телефон</option>
+        <option value="Xiaomi">Xiaomi Redmi 3S</option>
+        <option value="Meizu">Meizu m5</option>
+        <option value="Samsung">Samsung A7</option>
+        <option value="iPhone">iPhone SE</option>
+    </select>
+    <br>
+    <input type="button" value="Заказать" id ="formSubmit">
+
+</form>
+<div id="box"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
