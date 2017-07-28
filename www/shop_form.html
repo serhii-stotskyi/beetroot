@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+  <!--  <title>shop form</title>-->
+<!--
+    <script>
+        function formSubmit() {
+            var itemName = $("[name=itemName]").val();
+            console.log('itemName',itemName);
+        }
+    </script>
+-->
+
+</head>
+<body>
+
+<!--<form method="post"  onsubmit="formSubmit()">
+    <label>Название товара</label>
+    <input type="text" name="itemName" />
+    <br />
+    <br />
+     <label>Размер</label>
+    <input type="select" name="size" />
+    <br />
+    <br />
+    <label>Адрес доставки</label>
+    <textarea rows="10" cols="15" name="area"></textarea>
+    <br />
+    <br />
+    <label>Цена</label>
+    <input type="number" name="price" />
+    <br />
+    <label>Валюта</label>
+    <p><input name="currency" type="radio" value="ru"> рубль</p>
+    <p><input name="currency" type="radio" value="ua"checked> гривна</p>
+    <p><input name="currency" type="radio" value="en"> доллар</p>
+    <br />
+    <p><input type="submit" value="Подтвердить заказ"></p>
+    <br />-->
+<!--
+</form>
+<script src="value.js"></script>-->
+<form method="post"  class="form" id="userForm" action="shop.php">
+    <label for="email">user email *</label>
+    <input id="email" required="required" placeholder="please entr your email" type="email" name="email"></label>
+    <br>
+    <label for="login">user login *</label>
+    <input id="login" required="required" placeholder="please entr your login" type="login" name="login"></label>
+    <br>
+    <label for="password">user login *</label>
+    <input id="password" required="required" placeholder="please entr your password" type="password" name="password"></label>
+    <br>
+    <input type="submit" >
+</form>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="value.js"></script>
+</body>
+</html>

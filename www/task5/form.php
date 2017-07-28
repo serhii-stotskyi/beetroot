@@ -1,4 +1,5 @@
 <?php
+const DEFAULT_USER_LENGTH = 4;
 /**
  * create file name
  * @param $userName
@@ -56,23 +57,23 @@ function checkAvatar($avatar){
  * @return string
  */
 function checkUserInfo($avatar){
-    if (strlen($avatar)==4){
-        $result= "No user information";
-    }else{
-        $result= $avatar;}
+    if (strlen($avatar) == DEFAULT_USER_LENGTH){
+        $result = "No user information";
+    } else {
+        $result = $avatar;}
     return $result;
 }
 
-$success=[];
-$success['fileName'] =getFileName($_POST['userName']);
-$success['fileExist'] =fileExist($success['fileName']);
+$success = [];
+$success['fileName'] = getFileName($_POST['userName']);
+$success['fileExist'] = fileExist($success['fileName']);
 if ($success['fileExist']){
     $avatar1 = getAvatarFromFile($success['fileName'] );
     $info1 = getUserInfoFromFile($success['fileName']);
-    $success['avatar']= checkAvatar($avatar1);
-    $success['userInfo']= checkUserInfo($info1);
+    $success['avatar'] = checkAvatar($avatar1);
+    $success['userInfo'] = checkUserInfo($info1);
 }else {  $success['avatar'] = 'noavatar.jpg';
-    $success['userInfo'] ="no such user $_POST[userName]";
+    $success['userInfo'] = "no such user $_POST[userName]";
 }
 
 echo json_encode($success);

@@ -20,7 +20,11 @@ $(document).ready(function () {
            success:function (response) {
 
                if(response.success){
-                   $('textarea.form-control').text(response.result);
+                   $.each(response.result, function(index, value){
+                       //$('textarea.form-control').text("INDEX: " + index + " VALUE: " + value);
+                       $('textarea.form-control').val($('textarea.form-control').val() + " INDEX: " + index + " VALUE: " + value);
+                       debugger;
+                   });
                }
 
            }
