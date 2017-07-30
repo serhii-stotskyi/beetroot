@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+.form{
+    border: 1px solid black;
+    text-align: center;
+    display: inline-block;
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    font-family:Arial, sans-serif;
+    font-size: 16px;
+}
+input, select, textarea{
+    display: inline-block;
+    width: 90%;
+    height: 30px;
+
+
+}
+p>input{
+    display: block;
+    width: 100%;
+}
+.currency{
+    display: inline-block;
+    width: 50%;
+}
+.button{
+    display: block;
+}
