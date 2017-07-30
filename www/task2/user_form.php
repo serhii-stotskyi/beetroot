@@ -2,15 +2,14 @@
 $email = $_POST['email'];
 $login = $_POST['login'];
 $password = $_POST['password'];
-
-/*echo "$email";
+echo "$email";
 echo '<br>';
 echo $login;
 echo '<br>';
-echo $password;*/
+echo $password;
 $user = ["email"=>$email,
-        "login"=>$login,
-        "password"=>$password];
+    "login"=>$login,
+    "password"=>$password];
 
 $file = fopen($login.".txt", "a+");
 $test = fwrite($file, $user);
@@ -20,6 +19,6 @@ $result = file($login.".txt");
 
 
 echo json_encode(['success'=> true,
-                 'userInfo'=> unserialize($result)]);
+    'userInfo'=> unserialize($result)]);
 exit ();
 ?>
