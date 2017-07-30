@@ -35,6 +35,5 @@ if (!empty($promo)) {
 } else {
     $sum = getOrderPrice($cardCount, $cardName);
 }
-
 $response['sum'] = $sum;
 echo json_encode($response);

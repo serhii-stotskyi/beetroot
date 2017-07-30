@@ -7,3 +7,6 @@ a {
 .column{
     width: 25%;
 }
+.order_info span {
+    padding-right: 20px;
+}

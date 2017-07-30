@@ -4,7 +4,9 @@ $(document).ready(function () {
             type: 'post',
             url: '../php/orderstory.php',
             dataType: 'json',
-            beforeSend: function () {},
+            beforeSend: function () {
+                $("#order_list").remove();
+            },
             success: function (response) {
                 $("body").append("<div id='order_list'></div>");
                 var orderInfo = $("#order_list");

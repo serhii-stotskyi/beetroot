@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Июл 30 2017 г., 12:02
+-- Время создания: Июл 30 2017 г., 16:56
 -- Версия сервера: 5.5.55-0ubuntu0.14.04.1
 -- Версия PHP: 5.5.9-1ubuntu4.21
 
@@ -23,6 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `category`
+--
+
+INSERT INTO `category` (`id`, `category_name`) VALUES
+(1, 'videocard'),
+(2, 'phones');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `orders`
 --
 
@@ -33,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`order_id`),
   KEY `order_id` (`order_id`),
   KEY `order_id_2` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=ascii AUTO_INCREMENT=77 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=ascii AUTO_INCREMENT=92 ;
 
 --
 -- Дамп данных таблицы `orders`
@@ -48,7 +68,22 @@ INSERT INTO `orders` (`order_id`, `user_id`, `date`) VALUES
 (73, 5, '2017-07-29 17:54:19'),
 (74, 5, '2017-07-29 17:54:22'),
 (75, 5, '2017-07-29 17:54:26'),
-(76, 2, '2017-07-30 11:27:26');
+(76, 2, '2017-07-30 11:27:26'),
+(77, 2, '2017-07-30 16:34:13'),
+(78, 5, '2017-07-30 16:35:48'),
+(79, 5, '2017-07-30 16:38:11'),
+(80, 5, '2017-07-30 16:39:01'),
+(81, 5, '2017-07-30 16:40:44'),
+(82, 5, '2017-07-30 16:40:54'),
+(83, 5, '2017-07-30 16:43:59'),
+(84, 5, '2017-07-30 16:44:56'),
+(85, 5, '2017-07-30 16:48:01'),
+(86, 5, '2017-07-30 16:48:14'),
+(87, 5, '2017-07-30 16:48:49'),
+(88, 5, '2017-07-30 16:49:25'),
+(89, 5, '2017-07-30 16:49:41'),
+(90, 5, '2017-07-30 16:49:51'),
+(91, 5, '2017-07-30 16:51:51');
 
 -- --------------------------------------------------------
 
@@ -66,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `orders_info` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   KEY `order_id_2` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=ascii AUTO_INCREMENT=59 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=ascii AUTO_INCREMENT=74 ;
 
 --
 -- Дамп данных таблицы `orders_info`
@@ -81,7 +116,22 @@ INSERT INTO `orders_info` (`id`, `user_id`, `order_id`, `product_id`, `quantity`
 (55, 5, 73, 2, 2, 30000),
 (56, 5, 74, 2, 1, 15000),
 (57, 5, 75, 2, 1, 15000),
-(58, 2, 76, 1, 1, 20000);
+(58, 2, 76, 1, 1, 20000),
+(59, 2, 77, 1, 2, 40000),
+(60, 5, 78, 4, 1, 100500),
+(61, 5, 79, 4, 15, 1507500),
+(62, 5, 80, 1, 1, 20000),
+(63, 5, 81, 1, 1, 20000),
+(64, 5, 82, 1, 1, 20000),
+(65, 5, 83, 1, 1, 20000),
+(66, 5, 84, 1, 1, 20000),
+(67, 5, 85, 1, 1, 20000),
+(68, 5, 86, 1, 1, 20000),
+(69, 5, 87, 1, 1, 20000),
+(70, 5, 88, 1, 1, 10000),
+(71, 5, 89, 1, 1, 10000),
+(72, 5, 90, 1, 1, 19000),
+(73, 5, 91, 4, 1, 50250);
 
 -- --------------------------------------------------------
 
@@ -93,18 +143,20 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(30) NOT NULL,
   `price` int(30) NOT NULL,
+  `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=ascii AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=ascii AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `product_name`, `price`) VALUES
-(1, 'GTX1080TI', 20000),
-(2, 'GTX1070', 15000),
-(3, 'GTX1070', 10000);
+INSERT INTO `product` (`id`, `product_name`, `price`, `category_id`) VALUES
+(1, 'GTX1080TI', 20000, 1),
+(2, 'GTX1070', 15000, 1),
+(3, 'GTX1070', 10000, 1),
+(4, 'Lenovo', 100500, 2);
 
 -- --------------------------------------------------------
 

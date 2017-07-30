@@ -5,6 +5,7 @@ include 'count.php';
 $cardName = $_POST['cardName'];
 $cardCount = $_POST['cardCount'];
 
+
 $user_id = $_SESSION['id'];
 $sql = "INSERT INTO `orders` (`user_id` )VALUES ('$user_id')";
 $oder = mysqli_query($connect, $sql);
