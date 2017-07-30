@@ -4,36 +4,20 @@ $(document).ready(function () {
             type: 'post',
             url: '../php/orderstory.php',
             dataType: 'json',
-            beforeSend: function () {
-                console.log('beforeSend');
-                $('#test').empty().html('order_id' + '<br>');
-                $('#test1').empty().html('product_id');
-                $('#test11').empty().html('quantity');
-                $('#test111').empty().html('sum');
-            },
+            beforeSend: function () {},
             success: function (response) {
-                console.log('success');
-                if(response) {
-                    var i;
-                    var a;
-                    var eee = '#test';
+                $("body").append("<div id='order_list'></div>");
+                var orderInfo = $("#order_list");
 
-                    for(i=0; i < response.length; i++) {
-                        for(a=0; a < response.length; a++) {
-                            $(eee).append(response[i][a] + " " +  "<br> ");
-                            // if (a === response.length - 1) {
-                            //     $('#test').append(response[i][a]);
-                            //     }
-                            // else {
-                            //     $('#test').append(response[i][a] + ", ");
-                            // }
-                            //$('#test').append("<p>" + "Welcome " + "</p>"  + "<p>" + response[i] + response[i][a] + "</p>"+ "<br>");
-                        }
-                        eee = eee + '1';
-                        $(eee).append("<br>");
-
-                    }
-                }
+                response.forEach(function(item, i, response) {
+                    orderInfo.append(
+                        "<div class='order_info'>" +
+                            "<span class='orderId'>"+ item["order_id"] +"</span>" +
+                            "<span class='productId'>"+ item["product_id"] +"</span>" +
+                            "<span class='quantity'>"+ item["quantity"] +"</span>" +
+                            "<span class='orderSum'>"+ item["sum"] +"</span>" +
+                        "</div>");
+                });
             },
             error: function () {
                 console.log('error')

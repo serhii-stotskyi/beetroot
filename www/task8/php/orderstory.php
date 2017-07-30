@@ -1,26 +1,14 @@
 <?php
 include 'connection.php';
 $userId = $_SESSION['id'];
-$order_id =[];
-$product_id = [];
-$quantity = [];
-$sum = [];
 $sql = "SELECT * FROM  `orders_info` WHERE  `user_id` = '$userId'";
 $result = mysqli_query($connect, $sql);
+
 while ($row = mysqli_fetch_assoc($result)) {
-    $order_id[] = $row["order_id"];
-    $product_id[] = $row["product_id"];
-    $quantity[] = $row["quantity"];
-    $sum[] = $row["sum"];
-    //var_dump($arr);
+    $order[] = ['order_id' => $row["order_id"], 'product_id' => $row["product_id"], 'quantity' => $row["quantity"], 'sum' => $row["sum"]];
 }
 
-$test = [$order_id, $product_id,  $quantity, $sum];
-//var_dump($test);
-
-echo json_encode($test);
-//$test = mysqli_fetch_all($result, MYSQLI_NUM);
-//var_dump($arr);
+echo json_encode($order);;
 
 
 
@@ -64,7 +52,6 @@ echo json_encode($test);
 //while ($test = mysqli_fetch_row($result)) {
 //    echo $test;
 //}
-
 
 
 //mysqli_close($connect);
