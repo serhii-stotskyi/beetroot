@@ -14,7 +14,7 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (response) {
-                debugger;
+
                 $("#info").text(response.message);
                 $("#orderPrice").text(response.sum + " грн");
             },
