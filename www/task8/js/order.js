@@ -1,15 +1,15 @@
 $(document).ready(function () {
     function calculatePrice() {
         var
-            cardName = $('#productName').val(),
+            productName = $('#productName').val(),
             promo = $('#promo').val(),
-            cardCount = $('#count').val();
+            productCount = $('#count').val();
         $.ajax({
             type: 'POST',
             url: '../php/count.php',
             data: {
-                cardCount: cardCount,
-                cardName: cardName,
+                productCount: productCount,
+                productName: productName,
                 promo: promo
             },
             dataType: 'json',
@@ -24,17 +24,15 @@ $(document).ready(function () {
     }
     $('#makeOrder').click(function () {
         var
-            cardName = $('#productName').val(),
-            promo = $('#promo').val(),
-            cardCount = $('#count').val();
+            productName = $('#productName').val(),
+            productCount = $('#count').val();
 
         $.ajax({
             type: 'POST',
             url: '../php/order.php',
             data: {
-                cardCount: cardCount,
-                cardName: cardName,
-                promo: promo
+                productCount: productCount,
+                productName: productName
             },
             dataType: 'json',
             success: function () {
@@ -44,13 +42,12 @@ $(document).ready(function () {
         });
 
     });
-    $(document).on('keyup change',"#count,#promo,#card", function () {
+    $(document).on('keyup change',"#count,#promo,#productName", function () {
         calculatePrice();
 
     });
     $('#productCategory').on('change', function () {
         var categoryId = this.value;
-        // console.log(categoryId);
         $.ajax({
             type: 'POST',
             url: '../php/products.php',
@@ -64,13 +61,13 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if(response.success){
-                  $('<select id="productName" style="margin-top: 10px"><option disabled selected>Выберите товар</option></select>').insertAfter('#productCategory');
+                  $('<br><select id="productName" style="margin-top: 10px"><option disabled selected>Выберите товар</option></select>').insertAfter('#productCategory');
 
                     var goodsList = $('#productName');
 
                     response.productName.forEach(function (item, i, response) {
                         goodsList.append(
-                            "<option value=" + item.product_name + ">" + item.product_name + "</option>"
+                            "<option value=" + item.product_name + ">" + item.product_name +" "+" в наличии "+ item.available +  "</option>"
                         )
                     })
                 }else {

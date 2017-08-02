@@ -1,23 +1,28 @@
 <?php
 include 'connection.php';
-$cardName = $_POST['cardName'];
-$cardCount = $_POST['cardCount'];
+$productName = $_POST['productName'];
+if (!empty($_POST['productCount'])) {
+    $productCount = $_POST['productCount'];
+} else{
+    $productCount = 1;
+}
 $promo = $_POST['promo'];
 $response = [];
+
 /**
- * @param $cardCount
- * @param $cardName
+ * @param $count
+ * @param $name
  * @param int $sale
- * @return mixed
+ * @return float|int
  */
-function getOrderPrice($cardCount, $cardName, $sale = 0)
+function getOrderPrice($count , $name, $sale = 0)
 {
     global $connect;
-
-    $getPriceSql = "SELECT `price` FROM `product` WHERE  `product_name` =  '$cardName'";
+    $getPriceSql = "SELECT `price` FROM `product` WHERE  `product_name` =  '$name'";
     $orderPrice = mysqli_fetch_assoc(mysqli_query($connect, $getPriceSql));
-    return ($cardCount * $orderPrice['price']) * (100 - $sale)/100;
+    return ($count * $orderPrice['price']) * (100 - $sale)/100;
 }
+
 
 if (!empty($promo)) {
     $sql = "SELECT sale FROM  `promo_code` WHERE  `code` =  '$promo' 
@@ -26,14 +31,14 @@ if (!empty($promo)) {
     $sale = mysqli_fetch_assoc($promo_sql);
 
     if ($sale['sale']) {
-        $sum = getOrderPrice($cardCount, $cardName, $sale['sale']); // спросить почему так?
+        $sum = getOrderPrice($productCount, $productName, $sale['sale']);
         $response['message'] = "Promo code successfully applied, sale is " . $sale['sale'];
     } else {
-        $sum = getOrderPrice($cardCount, $cardName);
+        $sum = getOrderPrice($productCount, $productName);
         $response['message'] = "Promo code is not correct ";
     }
 } else {
-    $sum = getOrderPrice($cardCount, $cardName);
+    $sum = getOrderPrice($productCount, $productName);
 }
 $response['sum'] = $sum;
 echo json_encode($response);
