@@ -1,19 +1,39 @@
 <?php
 include 'connection.php';
-include 'count.php';
+include 'function.php';
 
-$cardName = $_POST['cardName'];
-$cardCount = $_POST['cardCount'];
+$productName = $_POST['productName'];
+if (!empty($_POST['productCount'])) {
+    $productCount = $_POST['productCount'];
+} else {
+    $productCount = 1;
+}
+$userId = $_SESSION['id'];
+$promo = $_POST['promo'];
 
-$user_id = $_SESSION['id'];
-$sql = "INSERT INTO `orders` (`user_id` )VALUES ('$user_id')";
-$oder = mysqli_query($connect, $sql);
+$sum = getSum($promo, $productCount, $productName);
 
-$sql_1 = "SELECT `id` FROM `product` WHERE  `product_name` =  '$cardName'";
-$product_id = mysqli_query($connect, $sql_1);
-$row = mysqli_fetch_assoc($product_id);
-$id = $row['id'];
+if (!empty($productName)) {
+    $productAvailable = mysqli_query($connect, "SELECT `available` FROM `product` WHERE  `product_name` =  '$productName'");
+    $available = mysqli_fetch_assoc($productAvailable);
+    if ($productCount > $available['available']) {
+        $response['message'] = "Not enough goods";
+    } else {
+        $oder = mysqli_query($connect, "INSERT INTO `orders` (`user_id` )VALUES ('$userId')");
 
-$sql_3 = "INSERT INTO `orders_info` (`order_id`, `user_id`, `product_id`,`quantity`, `sum`) VALUES (LAST_INSERT_ID(), '$user_id', '$id','$cardCount', '$sum')";
-$oder_info = mysqli_query($connect, $sql_3);
+        $productId = mysqli_query($connect, "SELECT `id` FROM `product` WHERE  `product_name` =  '$productName'");
+        $row = mysqli_fetch_assoc($productId);
+        $id = $row['id'];
 
+        $oderInfo = mysqli_query($connect, "INSERT INTO `orders_info` (`order_id`, `user_id`, `product_id`,`quantity`, `sum`) 
+                                                    VALUES (LAST_INSERT_ID(), '$userId', '$id','$productCount', '$sum')");
+
+        $newAvailable = $available['available'] - $productCount;
+        $query = mysqli_query($connect, "UPDATE `product` SET `available` = '$newAvailable' WHERE `product`.`id` = '$id'");
+        $response['message'] = "Order created";
+    }
+} else {
+    $response['message'] = "You did'nt select the product";
+}
+
+echo json_encode($response);

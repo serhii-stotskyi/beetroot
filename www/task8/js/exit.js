@@ -5,7 +5,7 @@ $(document).ready(function () {
             url: '../php/exit.php',
             dataType: 'json',
             success: function (response) {
-                if(response.success){
+                if (response.success) {
                     window.location.replace("../index.html");
                 }
             },
@@ -15,4 +15,4 @@ $(document).ready(function () {
 
     });
 
-    });
+});
