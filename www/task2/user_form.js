@@ -11,21 +11,10 @@ $(document).ready(function () {
                   login:login,
                   password: password
                  },
-            dataType:'json',
-            success: function (response) {
-                //debugger;
-                if (response.success){
-                    $("body").append("<p>" + response.userInfo +"</p>");
-                }
-                // успешное завершение запрса
-            },
-            error: function () {
-                //обработка ошибок
-            }
+            dataType:'json'
         });
 
         }
-
     )
 
 });
