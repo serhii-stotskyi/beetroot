@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	 $("#time").change(function () {
+	 $("#time").on('change',function () {
 	 	var time= $("#time").val();
         $.ajax({
             type: "POST",
@@ -9,11 +9,13 @@ $(document).ready(function(){
             },
             dataType: "json",
             success: function (response) {
+                
                 if(response.success){
-                    $("#cout").html("<div> " + response.color  +" </div>");
+                    $("#cout").html("<span> " + response.messageBox  + " </span>");
                 }
             },
             error: function () {
+                
             }
         });
 
